@@ -1,13 +1,8 @@
-let xhr = new XMLHttpRequest();
-let requestBody = null;
+let fetchPromise = fetch("./json/movies.json");
 
-xhr.open("GET", "./json/movies.json", true);
-xhr.addEventListener("load", () => {
-    console.log("...received response");
-    let responseBody = xhr.response;
-    let movieData = JSON.parse(responseBody);
-
-    console.log(movieData);
-});
-xhr.send(requestBody);
 console.log("Sent request...");
+
+fetchPromise.then((response) => {
+    console.log("...received response");
+    console.log(response);
+});
